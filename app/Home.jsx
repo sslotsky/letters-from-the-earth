@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, PageHeader, MainContent } from './styled/Layout';
+import { Button, Page, PageHeader, MainContent } from './styled/Layout';
 
 export default function Home() {
   return (
@@ -8,6 +8,11 @@ export default function Home() {
         <h1>Letters From The Earth</h1>
       </PageHeader>
       <MainContent>
+        <div>
+          <Button>
+            Start New Letter
+          </Button>
+        </div>
         <p>
           Do you Need Help Writing a Letter? If so, You’ve Come to the Right Place!
         </p>

@@ -15,3 +15,17 @@ export const MainContent = styled.main`
   font-size: 1.5rem;
   padding: 2rem 5rem;
 `;
+
+export const Button = styled.button`
+  background-color: darkmagenta;
+  color: white;
+  border-radius: .3rem;
+  cursor: pointer;
+  border: none;
+  padding: .75rem;
+  box-shadow: .2rem .2rem .5rem darkorange;
+
+  &:active {
+    opacity: 0.8;
+  }
+`;
