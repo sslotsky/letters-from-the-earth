@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Page, PageHeader, MainContent } from './styled/Layout';
+import { Button, LinkButton, Page, PageHeader, MainContent } from './styled/Layout';
 
 export default function Home() {
   return (
@@ -9,9 +9,9 @@ export default function Home() {
       </PageHeader>
       <MainContent>
         <div>
-          <Button>
+          <LinkButton to="/letters/new">
             Start New Letter
-          </Button>
+          </LinkButton>
         </div>
         <p>
           Do you Need Help Writing a Letter? If so, You’ve Come to the Right Place!
