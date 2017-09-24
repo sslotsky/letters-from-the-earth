@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'APP_ROOT/styled/Layout';
 import { withRouter } from 'react-router';
-import { Container, Terms, Actions } from './styles';
+import { Page, Container, Terms, Actions } from './styles';
 import terms from './terms';
 
 export default function tos(Component) {
@@ -24,23 +24,25 @@ export default function tos(Component) {
         }
 
         return (
-          <Container>
-            <Terms>
-              {terms}
-            </Terms>
-            <Actions>
-              <label>
-                <input type="checkbox" checked={agree} onChange={this.toggleAgree} />
-                I agree to these terms
-              </label>
-              <Button disabled={!agree} onClick={this.commit}>
-                Continue
-              </Button>
-              <Button onClick={this.cancel}>
-                Cancel
-              </Button>
-            </Actions>
-          </Container>
+          <Page>
+            <Container>
+              <Terms>
+                {terms}
+              </Terms>
+              <Actions>
+                <label>
+                  <input type="checkbox" checked={agree} onChange={this.toggleAgree} />
+                  I agree to these terms
+                </label>
+                <Button disabled={!agree} onClick={this.commit}>
+                  Continue
+                </Button>
+                <Button onClick={this.cancel}>
+                  Cancel
+                </Button>
+              </Actions>
+            </Container>
+          </Page>
         );
       }
     }

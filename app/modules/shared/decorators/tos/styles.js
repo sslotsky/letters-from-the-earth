@@ -1,16 +1,22 @@
 import styled from 'styled-components';
 
+export const Page = styled.div`
+  min-height: 100vh;
+  background-color: wheat;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10rem;
-  background-color: wheat;
 `;
 
 export const Terms = styled.div`
   background-color: whitesmoke;
-  flex: 1;
+  display: flex;
   padding: 2rem;
+  max-height: 25rem;
+  overflow: auto;
 `;
 
 export const Actions = styled.div`
