@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "server": "yarn run build-client && babel-node app/server/server.js --presets env,react,stage-0",
+    "build-client": "webpack --config ./webpack.config.ssr.js",
     "start": "webpack-dev-server --progress --colors -w"
   },
   "repository": {},
@@ -24,7 +26,9 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "express": "^4.15.4",
     "history": "^4.7.2",
+    "morgan": "^1.8.2",
     "react": "16.0.0-rc.3",
     "react-dom": "16.0.0-rc.3",
     "react-redux": "^5.0.6",

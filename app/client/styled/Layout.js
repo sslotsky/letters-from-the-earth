@@ -4,17 +4,20 @@ import { Link } from 'react-router-dom';
 export const Page = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 `;
 
 export const PageHeader = styled.header`
-  flex: 1 100%;
   text-align: center;
+  border-bottom: 1px solid #d2d2d2;
+  color: darkslategray;
 `;
 
 export const MainContent = styled.main`
   flex: 1 100%;
   font-size: 1.5rem;
   padding: 2rem 5rem;
+  color: darkslategray;
 `;
 
 const likeAButton = elem => styled(elem)`
