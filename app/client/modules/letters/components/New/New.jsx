@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { Page, PageHeader, MainContent } from 'APP_ROOT/styled/Layout';
 import { LinkRow, RowContainer } from './style';
+import LetterGroup from './LetterGroup';
 
 const letterTypes = [{
   display: 'Landlord Dispute',
@@ -18,13 +19,7 @@ export default function New() {
         <h1>What type of letter?</h1>
       </PageHeader>
       <MainContent>
-        {letterTypes.map(t => (
-          <RowContainer key={t.type}>
-            <LinkRow to={`/letters/new/${t.type}`}>
-              {t.display}
-            </LinkRow>
-          </RowContainer>
-        ))}
+        <LetterGroup title="Consumer Letters" types={letterTypes} />
       </MainContent>
     </Page>
   );

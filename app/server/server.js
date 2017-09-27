@@ -5,7 +5,7 @@ import render from './serverRender'
 const app = express()
 app.use(morgan('dev'))
 
-app.use('/assets', express.static('assets'))
+app.use('/dist', express.static('dist'));
 
 app.use(render)
 

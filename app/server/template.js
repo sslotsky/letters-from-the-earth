@@ -1,4 +1,4 @@
-export default (html, state) => `
+export default (html, state, assets) => `
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,7 +19,8 @@ export default (html, state) => `
   <script>
     window.__PRELOADED_STATE__ = ${JSON.stringify(state)}
   </script>
-  <script src="/assets/bundle.js"></script>
+  <script src="/dist/${assets.vendorBundle}"></script>
+  <script src="/dist/${assets.bundle}"></script> 
 </html>
 `
 

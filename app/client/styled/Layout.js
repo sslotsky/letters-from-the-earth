@@ -18,6 +18,7 @@ export const MainContent = styled.main`
   font-size: 1.5rem;
   padding: 2rem 5rem;
   color: darkslategray;
+  transform-origin: 0 0;
 `;
 
 const likeAButton = elem => styled(elem)`

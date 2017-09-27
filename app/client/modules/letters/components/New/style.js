@@ -7,10 +7,20 @@ export const RowContainer = styled.div`
   display: flex;
 `;
 
-export const LinkRow = styled(Link)`
+const rowContent = elem => styled(elem)`
   flex: 1;
   padding: 2rem;
   height: 5rem;
   text-decoration: none;
   color: darkslategray;
+`;
+
+export const LinkRow = rowContent(Link);
+
+export const RowContent = rowContent('div').extend`
+  cursor: pointer;
+`;
+
+export const Grouping = styled.div`
+  padding-left: 5rem;
 `;

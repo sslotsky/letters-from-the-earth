@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "yarn run build-client && babel-node app/server/server.js --presets env,react,stage-0",
+    "server": "yarn run clean && yarn run build-client && babel-node app/server/server.js --presets env,react,stage-0",
     "build-client": "webpack --config ./webpack.config.ssr.js",
-    "start": "webpack-dev-server --progress --colors -w"
+    "stage-test": "yarn run build-staging && node ./dist/server/server.js",
+    "build-staging": "yarn run clean && yarn run ssr-build && yarn run build-staging-client",
+    "clean": "rm -rf dist && mkdir dist",
+    "ssr-build": "babel -d ./dist ./app --presets env,react,stage-0",
+    "build-staging-client": "webpack --config ./webpack.config.production.js ",
+    "start": "webpack-dev-server --progress --colors -w",
+    "heroku-postbuild": "yarn run build-staging"
   },
   "repository": {},
   "author": "Sam Slotsky",
@@ -30,6 +36,7 @@
     "history": "^4.7.2",
     "morgan": "^1.8.2",
     "react": "16.0.0-rc.3",
+    "react-animations": "^0.1.0",
     "react-dom": "16.0.0-rc.3",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
