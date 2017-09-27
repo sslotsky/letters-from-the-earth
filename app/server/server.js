@@ -9,6 +9,4 @@ app.use('/dist', express.static('dist'));
 
 app.use(render)
 
-app.listen(9999)
-
-
+app.listen(process.env.PORT || 9999);
