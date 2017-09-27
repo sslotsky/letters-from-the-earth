@@ -22,9 +22,6 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle-[hash:6].js'
   },
-  devServer: {
-    historyApiFallback: true
-  },
   resolve: {
     extensions: ['.js', '.jsx']
   },

@@ -7,7 +7,6 @@ export default class LetterGroup extends Component {
     open: false
   };
 
-  //toggle = () => this.setState(({ open }) => ({ open: !open }));
   toggle = () => this.setState(({ open }) => ({ open: !open }));
 
   render() {
