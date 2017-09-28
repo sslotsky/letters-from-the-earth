@@ -12,6 +12,7 @@ export default (html, state, assets) => `
         width: 100%;
       }
     </style>
+    ${assets.styleTags}
   </head>
   <body>
     <div id="app">${html}</div>
