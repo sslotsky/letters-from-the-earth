@@ -3,28 +3,29 @@ import { Container } from './styles';
 
 export default class extends Component {
   state = {
-    collapsing: false
+    mint: true
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.open && !this.props.open) {
-      this.setState({ collapsing: true });
-    }
-
-    if (this.state.collapsing) {
-      setTimeout(() => {
-        this.setState({ collapsing: false });
-      }, 1000);
+  componentWillReceiveProps(nextProps, nextState) {
+    if (this.state.mint && nextProps.open !== this.props.open) {
+      this.setState({ mint: false });
     }
   }
 
   render() {
-    const { collapsing } = this.state;
     const { open, children } = this.props;
+
+    if (this.state.mint) {
+      return (
+        <div>
+          {open && children}
+        </div>
+      );
+    }
 
     return (
       <Container open={open}>
-        {(open || collapsing) && children}
+        {children}
       </Container>
     );
   }

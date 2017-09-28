@@ -10,4 +10,5 @@ const expandCollapse = ({ open }) => open ? css`
 export const Container = styled.div`
   transform-origin: 0 0;
   animation: ${expandCollapse};
+  animation-fill-mode: forwards;
 `;
