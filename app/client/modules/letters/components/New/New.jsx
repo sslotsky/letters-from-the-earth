@@ -1,26 +1,34 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import { Page, PageHeader, MainContent } from 'APP_ROOT/styled/Layout';
-import { LinkRow, RowContainer } from './style';
-import LetterGroup from './LetterGroup';
+import { Route } from 'react-router-dom';
+import { Logo, PageContainer, Nav, Page, PageHeader, MainContent } from 'APP_ROOT/styled/Layout';
+import { NavLink } from 'APP_ROOT/styled';
+import ConsumerLetters from './ConsumerLetters';
+import BusinessLetters from './BusinessLetters';
 
-const letterTypes = [{
-  display: 'Landlord Dispute',
-  type: 'landlord_dispute'
-}, {
-  display: 'Creditor Dispute',
-  type: 'creditor_dispute'
-}];
-
-export default function New() {
+export default function New({ match }) {
   return (
-    <Page>
-      <PageHeader>
-        <h1>What type of letter?</h1>
-      </PageHeader>
-      <MainContent>
-        <LetterGroup title="Consumer Letters" types={letterTypes} />
-      </MainContent>
-    </Page>
+    <PageContainer>
+      <Nav>
+        <Logo />
+        <NavLink to={`${match.path}`} exact>
+          Letters from a Consumer
+        </NavLink>
+        <NavLink to={`${match.path}/business`}>
+          Letters from a Business
+        </NavLink>
+        <NavLink to={`${match.path}/vendor`}>
+          Letters to a Vendor
+        </NavLink>
+      </Nav>
+      <Page>
+        <PageHeader>
+          <h1>What type of letter?</h1>
+        </PageHeader>
+        <MainContent>
+          <Route path={`${match.path}`} exact component={ConsumerLetters} />
+          <Route path={`${match.path}/business`} component={BusinessLetters} />
+        </MainContent>
+      </Page>
+    </PageContainer>
   );
 }

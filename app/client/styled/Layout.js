@@ -1,7 +1,28 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const headerHeight = '7rem';
+const colors = {
+  main: 'darkslategray'
+};
+
+export const PageContainer = styled.div`
+  display: flex;
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: ${colors.main};
+`;
+
+export const Logo = styled.div`
+  height: ${headerHeight};
+`;
+
 export const Page = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -9,8 +30,9 @@ export const Page = styled.div`
 
 export const PageHeader = styled.header`
   text-align: center;
-  border-bottom: 1px solid #d2d2d2;
-  color: darkslategray;
+  color: floralwhite;
+  height: ${headerHeight};
+  background-color: ${colors.main};
 `;
 
 export const MainContent = styled.main`

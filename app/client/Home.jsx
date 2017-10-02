@@ -9,7 +9,7 @@ export default function Home() {
       </PageHeader>
       <MainContent>
         <div>
-          <LinkButton to="/letters/new">
+          <LinkButton to="/letters/choose">
             Start New Letter
           </LinkButton>
         </div>

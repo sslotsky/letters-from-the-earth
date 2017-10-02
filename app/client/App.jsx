@@ -7,8 +7,8 @@ import Home from './Home';
 export default function App() {
   return (
     <Switch>
-      <Route path="/letters/new" exact component={NewLetter} />
-      <Route path="/letters/new/:letterType" component={LetterType} />
+      <Route path="/letters/choose" component={NewLetter} />
+      <Route path="/letters/start/:type" component={LetterType} />
       <Route component={Home} />
     </Switch>
   );
