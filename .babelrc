@@ -5,6 +5,7 @@
       "root": ["./"],
       "alias": {
         "APP_ROOT": "./app/client",
+        "LIB": "./app/lib",
         "MODULES": "./app/client/modules"
       }
     }]

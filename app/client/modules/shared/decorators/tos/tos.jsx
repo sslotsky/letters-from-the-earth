@@ -18,9 +18,10 @@ export default function tos(Component) {
 
       render() {
         const { agree, commit } = this.state;
+        const { match: { params: { type } } } = this.props;
 
         if (commit) {
-          return <Component {...this.props} />;
+          return <Component {...this.props} letterType={type} />;
         }
 
         return (

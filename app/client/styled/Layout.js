@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const headerHeight = '7rem';
-const colors = {
+export const colors = {
   main: 'darkslategray'
 };
 
