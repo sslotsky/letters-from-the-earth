@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const headerHeight = '7rem';
 export const colors = {
-  main: 'darkslategray'
+  main: 'darkslategray',
+  secondary: 'floralwhite'
 };
 
 export const PageContainer = styled.div`
@@ -33,6 +34,18 @@ export const PageHeader = styled.header`
   color: floralwhite;
   height: ${headerHeight};
   background-color: ${colors.main};
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    flex: 1;
+  }
+`;
+
+export const PageHeaderRight = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 `;
 
 export const MainContent = styled.main`

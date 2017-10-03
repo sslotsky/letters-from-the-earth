@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Logo, PageContainer, Nav, Page, PageHeader, MainContent } from 'APP_ROOT/styled/Layout';
+import { Logo, PageContainer, Nav, Page, PageHeader, PageHeaderRight, MainContent } from 'APP_ROOT/styled/Layout';
 import { NavLink } from 'APP_ROOT/styled';
 import ConsumerLetters from './ConsumerLetters';
 import BusinessLetters from './BusinessLetters';
+import { SignUp } from 'MODULES/identity/components';
 
 export default function New({ match }) {
   return (
@@ -23,6 +24,9 @@ export default function New({ match }) {
       <Page>
         <PageHeader>
           <h1>What type of letter?</h1>
+          <PageHeaderRight>
+            <SignUp />
+          </PageHeaderRight>
         </PageHeader>
         <MainContent>
           <Route path={`${match.path}`} exact component={ConsumerLetters} />

@@ -5,6 +5,7 @@ export const FormLabel = styled.label`
   flex: 1;
   display: flex;
   flex-direction: column;
+  font-weight: bold;
 
   &:not(:first-child) {
     margin-left: 1rem;
@@ -13,6 +14,7 @@ export const FormLabel = styled.label`
   input {
     color: ${colors.main};
     padding: 0.5rem;
+    margin-top: 0.5rem;
   }
 `;
 
