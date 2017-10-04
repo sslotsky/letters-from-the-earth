@@ -4,6 +4,7 @@
     ["module-resolver", {
       "root": ["./"],
       "alias": {
+        "SERVER": "./app/server",
         "APP_ROOT": "./app/client",
         "LIB": "./app/lib",
         "MODULES": "./app/client/modules"
