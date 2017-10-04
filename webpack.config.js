@@ -33,11 +33,6 @@ module.exports = {
       port: 3000,
       proxy: 'http://localhost:8080/'
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
-        'API_BASE': JSON.stringify('https://egg-ghost.herokuapp.com/v1')
-      }
-    })
+    new webpack.EnvironmentPlugin(['CAPTCHA_KEY'])
   ]
 }
