@@ -2,8 +2,11 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import bodyParser from 'body-parser';
+import env from 'dotenv';
 import render from './serverRender'
 import identity from 'SERVER/controllers/identity';
+
+env.config();
 
 const app = express()
 app.enable('trust proxy');
