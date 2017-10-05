@@ -12,6 +12,7 @@ export const adapter = axios.create({
 
 export default {
   identity: {
-    signup: data => adapter.post('/accounts', data)
+    signup: data => adapter.post('/accounts', data),
+    checkEligibility: username => adapter.post('/eligibility_checks', { username })
   }
 }

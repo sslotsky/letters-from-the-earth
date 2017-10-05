@@ -7,6 +7,7 @@ import { Modal, GlyphButton, Form, FormInput, FormGroup, Save, Captcha } from 'M
 import * as rules from 'LIB/validation/rules';
 import api from 'APP_ROOT/api';
 import { Bottom } from './styles';
+import formSubmission from 'MODULES/shared/actions/formSubmission';
 
 export function SignUp({ visible, open, close, handleSubmit, ...props }) {
   return (
@@ -15,7 +16,7 @@ export function SignUp({ visible, open, close, handleSubmit, ...props }) {
       <Modal visible={visible} close={close} title="Sign Up">
         <Form onSubmit={handleSubmit}>
           <FormGroup>
-            <Field component={FormInput} name="username" label="User Name" />
+            <Field component={FormInput} name="username" label="User Name" asyncField />
           </FormGroup>
           <FormGroup>
             <Field component={FormInput} name="password" label="Password" type="password" />
@@ -38,7 +39,7 @@ export function SignUp({ visible, open, close, handleSubmit, ...props }) {
 }
 
 const withSubmit = inject((props) => ({
-  onSubmit: api.identity.signup
+  onSubmit: formSubmission(api.identity.signup)
 }));
 
 const form = reduxForm({
@@ -46,7 +47,17 @@ const form = reduxForm({
   validate: values => validator(values, (form) => {
     form.validate('username', 'password', 'confirm', 'code').satisfies(rules.required);
     form.validate('confirm').satisfies(rules.matches('password'));
-  })
+  }),
+  asyncValidate: (values) => {
+    return api.identity.checkEligibility(values.username).then((resp) => {
+      if (!resp.data.eligible) {
+        return Promise.reject({
+          username: ['Already taken']
+        });
+      }
+    });
+  },
+  asyncBlurFields: ['username']
 });
 
 export default withSubmit(form(toggle(SignUp)));

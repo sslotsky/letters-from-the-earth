@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import env from 'dotenv';
 import render from './serverRender'
 import identity from 'SERVER/controllers/identity';
+import { ValidationException } from './validation';
 
 env.config();
 
@@ -26,6 +27,14 @@ const api = express.Router();
 app.use('/v1', api);
 
 identity(api);
+
+api.use((err, _, res, next) => {
+  if (err instanceof ValidationException) {
+    res.status(422).json({ errors: err.errors })
+  } else {
+    next(err)
+  }
+})
 
 app.use(render)
 

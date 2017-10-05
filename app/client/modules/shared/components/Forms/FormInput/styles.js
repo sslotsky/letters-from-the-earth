@@ -16,6 +16,18 @@ export const FormLabel = styled.label`
     padding: 0.5rem;
     margin-top: 0.5rem;
   }
+
+  i {
+    margin-left: 1rem;
+
+    &.fa-spinner {
+      color: orange;
+    }
+
+    &.fa-check {
+      color: green;
+    }
+  }
 `;
 
 export const Error = styled.p`

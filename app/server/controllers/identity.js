@@ -1,22 +1,16 @@
-import axios from 'axios';
-import User from 'SERVER/models/User';
-var bcrypt = require('bcrypt-nodejs');
+import { eligible } from 'SERVER/services/user';
+import { createAccount } from 'SERVER/useCases/identity';
 
 export default function identity(api) {
-  api.post('/accounts', (req, res) => {
-    axios.post('https://www.google.com/recaptcha/api/siteverify', {
-      secret: process.env.CAPTCHA_SECRET,
-      response: req.body.code,
-      remoteIp: req.ip
-    }).then(() => {
-      const { username, password } = req.body;
-      const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  api.post('/accounts', (req, res, next) => {
+    const { username, password, code } = req.body;
 
-      User.forge({ username, password: hashedPassword }).save().then(
-        user => res.json({ user })
-      )
-    }).catch((err) => {
-      res.status(422).end();
-    });
+    return createAccount(username, password, code, req.ip).then(
+      user => res.json({ user })
+    ).catch(next);
+  });
+
+  api.post('/eligibility_checks', (req, res) => {
+    return eligible(req.body.username).then(eligible => res.json({ eligible }));
   });
 }
