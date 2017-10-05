@@ -14,15 +14,18 @@ export default function render(req, res) {
   const context = {};
 
   const sheet = new ServerStyleSheet()
-  const styleTags = sheet.getStyleTags()
 
   const html = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>
-    </Provider>
+    sheet.collectStyles(
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          <App />
+        </StaticRouter>
+      </Provider>
+    )
   )
+
+  const styleTags = sheet.getStyleTags()
 
   if (context.url) {
     res.redirect(301, context.url)

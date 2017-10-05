@@ -38,8 +38,8 @@ export function SignUp({ visible, open, close, handleSubmit, ...props }) {
   );
 }
 
-const withSubmit = inject((props) => ({
-  onSubmit: formSubmission(api.identity.signup)
+const withSubmit = inject(({ close }) => ({
+  onSubmit: data => formSubmission(api.identity.signup)(data).then(close)
 }));
 
 const form = reduxForm({
@@ -60,4 +60,4 @@ const form = reduxForm({
   asyncBlurFields: ['username']
 });
 
-export default withSubmit(form(toggle(SignUp)));
+export default toggle(withSubmit(form(SignUp)));

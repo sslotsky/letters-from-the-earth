@@ -43,11 +43,9 @@ module.exports = {
       debug: false
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-        CAPTCHA_KEY: JSON.stringify(process.env.CAPTCHA_KEY)
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
+    new webpack.EnvironmentPlugin(['CAPTCHA_KEY']),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,

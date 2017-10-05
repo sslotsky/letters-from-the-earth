@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "CAPTCHA_SECRET=$CAPTCHA_SECRET yarn run clean && yarn run build-client && babel-node app/server/server.js --presets env,react,stage-0",
+    "server": "yarn run clean && yarn run build-client && babel-node app/server/server.js --presets env,react,stage-0",
     "build-client": "webpack --config ./webpack.config.ssr.js",
     "stage-test": "yarn run build-staging && node ./dist/server/server.js",
     "build-staging": "yarn run clean && yarn run ssr-build && yarn run build-staging-client",
     "clean": "rm -rf dist && mkdir dist",
-    "ssr-build": "CAPTCHA_SECRET=$CAPTCHA_SECRET babel -d ./dist ./app --presets env,react,stage-0",
+    "ssr-build": "babel -d ./dist ./app --presets env,react,stage-0",
     "build-staging-client": "webpack --config ./webpack.config.production.js ",
     "start": "webpack-dev-server --progress --colors -w",
     "heroku-postbuild": "yarn run build-staging"
@@ -38,6 +38,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "history": "^4.7.2",
+    "jsonwebtoken": "^8.0.1",
     "knex": "^0.13.0",
     "morgan": "^1.8.2",
     "pg": "^7.3.0",
