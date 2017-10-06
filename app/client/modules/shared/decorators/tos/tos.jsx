@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'APP_ROOT/styled/Layout';
+import { Button } from 'MODULES/shared/components/Layout';
 import { withRouter } from 'react-router';
 import { Page, Container, Terms, Actions } from './styles';
 import terms from './terms';

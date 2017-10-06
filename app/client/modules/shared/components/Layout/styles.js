@@ -80,6 +80,8 @@ const likeAButton = elem => styled(elem)`
 `;
 
 export const Button = likeAButton('button');
-export const LinkButton = styled(likeAButton(Link))`
+
+export const LinkButton = likeAButton(Link).extend`
   text-decoration: none;
 `;
+

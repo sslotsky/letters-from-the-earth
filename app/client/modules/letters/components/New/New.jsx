@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Logo, PageContainer, Nav, Page, PageHeader, PageHeaderRight, MainContent } from 'APP_ROOT/styled/Layout';
-import { NavLink } from 'APP_ROOT/styled';
+import { Logo, PageContainer, Nav, Page, PageHeader, PageHeaderRight, MainContent, NavLink } from 'MODULES/shared/components/Layout';
+import { SignUp } from 'MODULES/identity/components';
 import ConsumerLetters from './ConsumerLetters';
 import BusinessLetters from './BusinessLetters';
-import { SignUp } from 'MODULES/identity/components';
 
 export default function New({ match }) {
   return (

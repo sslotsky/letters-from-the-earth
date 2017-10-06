@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'APP_ROOT/styled/Layout';
+import { Button } from 'MODULES/shared/components/Layout';
 
 export default function Save({ pristine, invalid, submitting, children }) {
   return (

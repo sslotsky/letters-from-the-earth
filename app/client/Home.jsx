@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, LinkButton, Page, PageHeader, MainContent } from './styled/Layout';
+import { Button, LinkButton, Page, PageHeader, MainContent } from 'MODULES/shared/components/Layout';
 
 export default function Home() {
   return (

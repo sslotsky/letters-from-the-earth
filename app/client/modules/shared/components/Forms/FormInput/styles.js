@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from 'APP_ROOT/styled/Layout';
+import { colors } from 'MODULES/shared/components/Layout';
 
 export const FormLabel = styled.label`
   flex: 1;

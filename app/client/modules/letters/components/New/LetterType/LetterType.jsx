@@ -1,7 +1,7 @@
 import React from 'react';
 import { tos } from 'MODULES/shared/decorators';
 import dictionary from 'LIB/dictionary';
-import { Page, PageHeader, MainContent } from 'APP_ROOT/styled/Layout';
+import { Page, PageHeader, MainContent } from 'MODULES/shared/components/Layout';
 import StandardConsumer from './StandardConsumer';
 
 const map = dictionary().set(
