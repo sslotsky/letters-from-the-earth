@@ -85,3 +85,8 @@ export const LinkButton = likeAButton(Link).extend`
   text-decoration: none;
 `;
 
+export const Buttons = styled.div`
+  button {
+    margin-left: .5rem;
+  }
+`;
