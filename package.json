@@ -11,7 +11,8 @@
     "ssr-build": "babel -d ./dist ./app --presets env,react,stage-0",
     "build-staging-client": "webpack --config ./webpack.config.production.js ",
     "start": "webpack-dev-server --progress --colors -w",
-    "heroku-postbuild": "yarn run build-staging"
+    "migrate": "yarn run knex migrate:latest",
+    "heroku-postbuild": "yarn run build-staging && yarn run migrate"
   },
   "repository": {},
   "author": "Sam Slotsky",
