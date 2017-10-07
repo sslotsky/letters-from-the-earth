@@ -9,12 +9,15 @@ module.exports = {
       'axios',
       'react',
       'react-dom',
+      'react-recaptcha',
       'react-redux',
       'react-router',
+      'react-router-dom',
       'redux',
       'redux-form',
       'redux-resolver',
       'redux-thunk',
+      'styled-components',
       'validate-this'
     ]
   },
