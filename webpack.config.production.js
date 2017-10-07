@@ -46,7 +46,10 @@ module.exports = {
       debug: false
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.API_BASE': JSON.stringify(
+        process.env.API_BASE || 'http://localhost:9999/v1'
+      )
     }),
     new webpack.EnvironmentPlugin(['CAPTCHA_KEY']),
     new webpack.optimize.UglifyJsPlugin({

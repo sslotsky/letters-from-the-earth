@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { login, logout } from './session';
 
-const apiBase = process.env.API_BASE || 'http://localhost:9999/v1';
+const apiBase = process.env.API_BASE;
 
 export const adapter = axios.create({
   baseURL: apiBase,
