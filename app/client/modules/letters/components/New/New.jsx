@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Logo, PageContainer, Nav, Page, PageHeader, PageHeaderRight, MainContent, NavLink } from 'MODULES/shared/components/Layout';
-import { SignUp } from 'MODULES/identity/components';
+import { Logo, PageContainer, Nav, Page, MainContent, NavLink } from 'MODULES/shared/components/Layout';
+import { SiteHeader } from 'MODULES/shared/components';
 import ConsumerLetters from './ConsumerLetters';
 import BusinessLetters from './BusinessLetters';
 
@@ -21,12 +21,7 @@ export default function New({ match }) {
         </NavLink>
       </Nav>
       <Page>
-        <PageHeader>
-          <h1>What type of letter?</h1>
-          <PageHeaderRight>
-            <SignUp />
-          </PageHeaderRight>
-        </PageHeader>
+        <SiteHeader title="What type of letter?" />
         <MainContent>
           <Route path={`${match.path}`} exact component={ConsumerLetters} />
           <Route path={`${match.path}/business`} component={BusinessLetters} />

@@ -8,6 +8,7 @@ import * as rules from 'LIB/validation/rules';
 import api from 'APP_ROOT/api';
 import { Bottom } from './styles';
 import formSubmission from 'MODULES/shared/actions/formSubmission';
+import { setUser } from 'MODULES/identity/actions';
 
 export function SignUp({ visible, open, close, handleSubmit, ...props }) {
   return (
@@ -38,8 +39,8 @@ export function SignUp({ visible, open, close, handleSubmit, ...props }) {
   );
 }
 
-const withSubmit = inject(({ close }) => ({
-  onSubmit: data => formSubmission(api.identity.signup)(data).then(close)
+const withSubmit = inject(() => ({
+  onSubmit: formSubmission(api.identity.signup)
 }));
 
 const form = reduxForm({
@@ -48,6 +49,7 @@ const form = reduxForm({
     form.validate('username', 'password', 'confirm', 'code').satisfies(rules.required);
     form.validate('confirm').satisfies(rules.matches('password'));
   }),
+  onSubmitSuccess: (resp, dispatch, { close }) => dispatch(setUser(resp.data.user)).then(close),
   asyncValidate: (values) => {
     return api.identity.checkEligibility(values.username).then((resp) => {
       if (!resp.data.eligible) {

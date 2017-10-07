@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import env from 'dotenv';
 import render from './serverRender'
 import identity from 'SERVER/controllers/identity';
+import { InvalidCredentials } from 'SERVER/useCases/identity';
 import { ValidationException } from './validation';
 
 env.config();
@@ -31,10 +32,14 @@ identity(api);
 api.use((err, _, res, next) => {
   if (err instanceof ValidationException) {
     res.status(422).json({ errors: err.errors })
+  } else if (err instanceof InvalidCredentials) {
+    res.status(422).json({ code: 'invalid_credentials' })
   } else {
     next(err)
   }
 })
+
+api.use((req, res, next) => res.status(404).end());
 
 app.use(render)
 
