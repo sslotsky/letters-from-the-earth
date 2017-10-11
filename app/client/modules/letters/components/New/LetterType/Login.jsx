@@ -1,14 +1,14 @@
 import React from 'react';
 import { toggle } from 'MODULES/shared/decorators';
-import { GlyphButton } from 'MODULES/shared/components';
-import LoginModal from './LoginModal';
+import { ButtonLink } from 'MODULES/shared/components/Layout';
+import LoginModal from 'MODULES/identity/components/Login/LoginModal';
 
 export function Login({ open, ...props }) {
   return (
-    <GlyphButton name="sign-in" onClick={open}>
+    <ButtonLink onClick={open}>
       Login
       <LoginModal {...props} />
-    </GlyphButton>
+    </ButtonLink>
   );
 }
 

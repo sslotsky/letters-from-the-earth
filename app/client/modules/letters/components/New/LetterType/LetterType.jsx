@@ -4,6 +4,7 @@ import dictionary from 'LIB/dictionary';
 import { PageContainer, Page, MainContent } from 'MODULES/shared/components/Layout';
 import { SiteHeader } from 'MODULES/shared/components';
 import StandardConsumer from './StandardConsumer';
+import Custom from './Custom';
 
 const map = dictionary().set(
   'landlord_dispute',
@@ -11,7 +12,7 @@ const map = dictionary().set(
 )(StandardConsumer);
 
 export function LetterType({ letterType }) {
-  const Template = map.get(letterType);
+  const Template = map.get(letterType, Custom);
 
   return (
     <PageContainer>

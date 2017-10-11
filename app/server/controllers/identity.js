@@ -1,5 +1,5 @@
 import { eligible } from 'SERVER/services/user';
-import { createAccount, encode, login } from 'SERVER/useCases/identity';
+import { createAccount, login } from 'SERVER/useCases/identity';
 import { writeCookie, clearCookie } from 'SERVER/middleware';
 
 export default function identity(api) {

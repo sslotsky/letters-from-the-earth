@@ -11,7 +11,7 @@ export default function dictionary() {
     return d;
   };
 
-  d.get = key => data[key];
+  d.get = (key, defaultVal) => data[key] || defaultVal;
 
   return d;
 }

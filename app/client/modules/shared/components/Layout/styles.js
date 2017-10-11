@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const headerHeight = '7rem';
@@ -56,7 +56,7 @@ export const MainContent = styled.main`
   transform-origin: 0 0;
 `;
 
-const likeAButton = elem => styled(elem)`
+const buttonStyles = css`
   background-color: darkmagenta;
   color: white;
   border-radius: .3rem;
@@ -79,14 +79,43 @@ const likeAButton = elem => styled(elem)`
   }
 `;
 
-export const Button = likeAButton('button');
+export const Button = styled.button.attrs({
+  type: 'button'
+})`
+  ${buttonStyles}
+`;
 
-export const LinkButton = likeAButton(Link).extend`
+
+export const LinkButton = styled(Link)`
+  ${buttonStyles}
   text-decoration: none;
 `;
+
+export const ButtonLink = Button.extend`
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  color: steelblue;
+  padding: 0;
+  margin: 0 .5rem;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+`;
+
 
 export const Buttons = styled.div`
   button {
     margin-left: .5rem;
   }
+`;
+
+export const Secondary = styled.div`
+  display: flex;
+  align-items: center;
 `;

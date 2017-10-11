@@ -20,7 +20,7 @@ export default function tos(Component) {
         const { agree, commit } = this.state;
         const { match: { params: { type } } } = this.props;
 
-        if (commit) {
+        if (true) {//commit) {
           return <Component {...this.props} letterType={type} />;
         }
 
