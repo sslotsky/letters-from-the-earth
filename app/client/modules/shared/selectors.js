@@ -15,10 +15,15 @@ export default function select(transform, ...selectors) {
       return false;
     });
 
-    if (changed) {
+    if (changed || !memo[transform]) {
       memo[transform] = transform(...transformValues);
     }
 
     return memo[transform];
   };
 }
+
+export const isAuthenticated = select(
+  loggedIn => ({ authenticated: loggedIn }),
+  authenticated
+);
