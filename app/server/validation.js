@@ -13,10 +13,11 @@ export function factCheck(bookshelf, params) {
       bookshelfModel.apply(this, arguments)
 
       if (this.validate) {
-        this.on('saving', model =>
-          asyncValidator(model, this.validate).then(errors => {
+        this.on('saving', (model, attrs, opts) =>
+          asyncValidator(model, book => this.validate(book, model, attrs, opts)).then(errors => {
             if (Object.keys(errors).length) {
-              throw new ValidationException(errors)
+              const format = opts.formatErrors || ((errors) => errors);
+              throw new ValidationException(format(errors));
             }
           })
         )

@@ -36,6 +36,7 @@ export default {
     })
   },
   letterRequests: {
-    search: params => adapter.post('/letter_requests/search', params)
+    search: params => adapter.post('/letter_requests/search', params),
+    of: type => data => adapter.post(`/letter_requests/${type}`, data)
   }
 }

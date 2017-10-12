@@ -14,12 +14,16 @@ export function create(letterType, letterRequest, userId) {
     throw new NotFound();
   }
 
+  const formatErrors = errors => ({
+    details: errors
+  });
+
   return bookshelf.transaction(t =>
     LetterRequest.forge({
       status: 'created',
       purpose: letterRequest.purpose
     }).save({ user_id: userId }, { transacting: t }).tap(request =>
-      LetterType.forge().save(letterRequest.details, { transacting: t }).tap(letter =>
+      LetterType.forge().save(letterRequest.details, { transacting: t, formatErrors }).tap(letter =>
         LetterDetail.forge({
           detailable_id: letter.id,
           detailable_type: letterType
