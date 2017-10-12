@@ -1,5 +1,5 @@
 import React from 'react';
-import { RowContent, RowContainer, LinkRow, Grouping } from './style';
+import { RowContainer, LinkRow } from '../style';
 
 const letterTypes = [{
   display: 'Landlord Dispute',

@@ -34,5 +34,8 @@ export default {
       logout();
       return resp;
     })
+  },
+  letterRequests: {
+    search: params => adapter.post('/letter_requests/search', params)
   }
 }

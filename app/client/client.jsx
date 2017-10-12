@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+import { initializeStore } from '@orange-marmalade/paginate-this';
+
 import { setUser } from 'MODULES/identity/actions';
 
 import { user } from './session';
@@ -15,6 +17,8 @@ const currentUser = user();
 if (currentUser) {
   store().dispatch(setUser(currentUser));
 }
+
+initializeStore(store());
 
 ReactDOM.hydrate(
   <Provider store={store()}>
