@@ -34,7 +34,7 @@ module.exports = {
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
-      port: 3000,
+      port: 3002,
       proxy: 'http://localhost:8080/'
     }),
     new webpack.EnvironmentPlugin(['CAPTCHA_KEY'])

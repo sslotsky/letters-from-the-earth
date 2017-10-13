@@ -64,7 +64,7 @@ const withSubmit = inject(({ match }) => ({
   initialValues: {
     purpose: match.params.type
   },
-  onSubmit: formSubmission(api.letterRequests.of('standard_business_letters'))
+  onSubmit: formSubmission(api.letterRequests.of('standard_consumer_letters'))
 }));
 
 const form = reduxForm({

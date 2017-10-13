@@ -24,7 +24,7 @@ export default {
     }).catch((err) => {
       if (err.response.data.code === 'invalid_credentials') {
         err.response.data.errors = { 
-          credentials: ['Invalid credentials']
+          _error: ['Invalid credentials']
         }
       }
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getFormError } from 'redux-form';
 import styled from 'styled-components';
 
 const Alert = styled.div`
@@ -18,16 +20,20 @@ const Error = styled.p`
   }
 `;
 
-export default function ErrorAlert({ meta }) {
-  const { touched, invalid, error } = meta;
-  const hasError = touched && invalid;
-  const errors = hasError && error.map((e, i) => (
+export function ErrorAlert({ error = [] }) {
+  const errors = error.map((e, i) => (
     <Error key={i}>{e}</Error>
   ));
 
-  return hasError && (
+  return error.length > 0 && (
     <Alert>
       {errors}
     </Alert>
   );
 }
+
+export default connect(
+  (state, props) => ({
+    error: getFormError(props.name)(state)
+  })
+)(ErrorAlert);

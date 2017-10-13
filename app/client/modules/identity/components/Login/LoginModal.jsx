@@ -8,15 +8,13 @@ import api from 'APP_ROOT/api';
 import formSubmission from 'MODULES/shared/actions/formSubmission';
 import { setUser } from 'MODULES/identity/actions';
 import ErrorAlert from 'MODULES/shared/components/Forms/ErrorAlert';
+import store from 'APP_ROOT/store';
 
 export function Login({ visible, open, close, handleSubmit, ...props }) {
   return (
     <Modal visible={visible} close={close} title="Log In">
       <Form onSubmit={handleSubmit}>
-        <Field
-          name="credentials"
-          component={ErrorAlert}
-        />
+        <ErrorAlert name="login" />
         <FormGroup>
           <Field component={FormInput} name="username" label="User Name" />
         </FormGroup>
