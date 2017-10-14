@@ -3,5 +3,6 @@ import api from 'APP_ROOT/api';
 
 export default createPaginator({
   listId: 'letterRequests',
-  fetch: ({ query }) => () => api.letterRequests.search(query)
+  fetch: ({ query }) => () => api.letterRequests.search(query),
+  cache: true
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import { withRouter } from 'react-router';
+import { composables } from '@orange-marmalade/paginate-this';
 import { validator } from 'validate-this';
 import { inject, redirectOnSubmit } from 'MODULES/shared/decorators';
 import { Form, FormGroup, FormInput, Save, Fieldset } from 'MODULES/shared/components';
@@ -67,8 +68,11 @@ const withSubmit = inject(({ match }) => ({
   onSubmit: formSubmission(api.letterRequests.of('standard_consumer_letters'))
 }));
 
+const pageActions = composables({ listId: 'letterRequests' });
+
 const form = reduxForm({
   form: 'standardConsumer',
+  onSubmitSuccess: (_, dispatch) => dispatch(pageActions.expire()),
   validate: values => validator(values, form => {
     form.validateChild('details', (details) => {
       details.validate(
