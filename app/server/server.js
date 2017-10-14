@@ -1,4 +1,5 @@
 import express from 'express'
+import sslRedirect from 'heroku-ssl-redirect';
 import morgan from 'morgan'
 import cors from 'cors'
 import bodyParser from 'body-parser';
@@ -14,7 +15,7 @@ env.config();
 const app = express()
 app.enable('trust proxy');
 
-app.use(morgan('dev'))
+app.use(sslRedirect(), morgan('dev'))
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
