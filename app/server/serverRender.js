@@ -35,7 +35,7 @@ export default function render(req, res) {
   const styleTags = sheet.getStyleTags()
 
   if (context.url) {
-    res.redirect(301, context.url)
+    res.redirect(context.statusCode || 301, context.url)
   } else {
     const status = context.status || 200
     res.status(status).send(template(html, store.getState(), { bundle, vendorBundle, styleTags }))
