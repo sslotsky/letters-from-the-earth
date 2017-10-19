@@ -11,8 +11,7 @@ import Submit from './Submit';
 
 export function StandardConsumer({ handleSubmit, ...props }) {
   return (
-    <Form onSubmit={handleSubmit} style={{ width: '75%' }}>
-      <h1>Standard Consumer</h1>
+    <Form onSubmit={handleSubmit}>
       <FormSection name="details" component="div">
         <Fieldset>
           <legend>Letter is from:</legend>

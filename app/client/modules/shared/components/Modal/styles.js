@@ -9,6 +9,7 @@ export const Backdrop = styled.div`
   opacity: 0.7;
   height: 100%;
   width: 100%;
+  z-index: 2;
 `;
 
 export const ModalContainer = styled.div`
@@ -20,6 +21,7 @@ export const ModalContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-around;
+  z-index: 2;
 `;
 
 export const Dialog = styled.div`

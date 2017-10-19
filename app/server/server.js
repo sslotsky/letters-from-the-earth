@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use('/dist', express.static('dist'));
+app.use('/assets', express.static('assets'));
 
 app.use(decode);
 

@@ -110,7 +110,9 @@ export const ButtonLink = Button.extend`
 
 
 export const Buttons = styled.div`
-  button {
+  padding: 0 .5rem;
+
+  button:not(:first-child) {
     margin-left: .5rem;
   }
 `;

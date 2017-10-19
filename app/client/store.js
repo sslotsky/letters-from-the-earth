@@ -6,6 +6,10 @@ import reducers from './reducers';
 let store;
 
 function rehydrate(state) {
+  if (!state) {
+    return undefined;
+  }
+
   const { letterRequests, ...rest } = state;
   return {
     ...rest,

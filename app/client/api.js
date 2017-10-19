@@ -1,5 +1,7 @@
 import axios from 'axios';
+import { clearUser } from 'MODULES/identity/actions';
 import { login, logout } from './session';
+import store from './store';
 
 const apiBase = process.env.API_BASE;
 
@@ -10,6 +12,15 @@ export const adapter = axios.create({
     Accept: 'application/json'
   }
 });
+
+adapter.interceptors.response.use(undefined, error => {
+  if (error.response.status === 403) {
+    store().dispatch(clearUser());
+    logout();
+  }
+
+  return Promise.reject(error)
+})
 
 export default {
   identity: {

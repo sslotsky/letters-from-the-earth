@@ -1,8 +1,10 @@
 import React from 'react';
 import { tos } from 'MODULES/shared/decorators';
 import dictionary from 'LIB/dictionary';
-import { PageContainer, Page, MainContent } from 'MODULES/shared/components/Layout';
 import { SiteHeader } from 'MODULES/shared/components';
+import { Heading } from 'MODULES/shared/components/Layout/Header';
+import { PageContainer, Page, ContentHeader, Content, LinkButton, Paragraph, Letter } from 'MODULES/shared/components/Layout/Page';
+import Nav from 'MODULES/shared/components/Nav';
 import StandardConsumer from './StandardConsumer';
 import Custom from './Custom';
 
@@ -16,11 +18,14 @@ export function LetterType({ letterType }) {
 
   return (
     <PageContainer>
+      <Nav />
       <Page>
-        <SiteHeader title="Letter Details" />
-        <MainContent>
+        <Heading>
+          Letter Details
+        </Heading>
+        <Content>
           <Template />
-        </MainContent>
+        </Content>
       </Page>
     </PageContainer>
   );

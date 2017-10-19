@@ -16,7 +16,7 @@ export function Session({ authenticated }) {
     );
   }
 
-  return <Logout />;
+  return <Buttons><Logout /></Buttons>;
 }
 
 export default connect(isAuthenticated)(Session);
