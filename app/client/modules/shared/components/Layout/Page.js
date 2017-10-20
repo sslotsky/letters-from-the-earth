@@ -24,7 +24,14 @@ export const Nav = styled.nav`
   width: 100%;
   z-index: 1;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: space-between;
+  align-items: center;
+`;
+
+export const NavSection = styled.div`;
+  flex: 1;
+  height: 100%;
+  display: flex;
   align-items: center;
 `;
 

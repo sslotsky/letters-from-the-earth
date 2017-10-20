@@ -111,6 +111,9 @@ export const ButtonLink = Button.extend`
 
 export const Buttons = styled.div`
   padding: 0 .5rem;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 
   button:not(:first-child) {
     margin-left: .5rem;

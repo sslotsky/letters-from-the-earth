@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@orange-marmalade/paginate-this@^4.0.0-beta-17":
-  version "4.0.0-beta-17"
-  resolved "https://registry.yarnpkg.com/@orange-marmalade/paginate-this/-/paginate-this-4.0.0-beta-17.tgz#dad3b130538619d1474e4c514b6573771939ad9e"
+"@orange-marmalade/paginate-this@^4.0.0-beta-18":
+  version "4.0.0-beta-18"
+  resolved "https://registry.yarnpkg.com/@orange-marmalade/paginate-this/-/paginate-this-4.0.0-beta-18.tgz#981bbedda85e489e84e559a2c3248079ee6a117a"
   dependencies:
     prop-types "^15.5.7"
     uuid "^3.0.1"
