@@ -1,60 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const headerHeight = '7rem';
 export const colors = {
   main: 'darkslategray',
   secondary: 'floralwhite'
 };
-
-export const PageContainer = styled.div`
-  display: flex;
-`;
-
-export const Nav = styled.nav`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  background-color: ${colors.main};
-`;
-
-export const Logo = styled.div`
-  height: ${headerHeight};
-`;
-
-export const Page = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-
-export const PageHeader = styled.header`
-  text-align: center;
-  color: floralwhite;
-  height: ${headerHeight};
-  background-color: ${colors.main};
-  display: flex;
-  justify-content: space-between;
-
-  h1 {
-    flex: 1;
-  }
-`;
-
-export const PageHeaderRight = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 1rem;
-`;
-
-export const MainContent = styled.main`
-  flex: 1 100%;
-  font-size: 1.5rem;
-  padding: 2rem 5rem;
-  color: darkslategray;
-  transform-origin: 0 0;
-`;
 
 const buttonStyles = css`
   background-color: darkmagenta;
