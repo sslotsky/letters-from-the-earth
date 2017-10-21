@@ -26,6 +26,7 @@ export function Session({ authenticated }) {
       <NavSection key="session">
         <Buttons>
           <Login />
+          <SignUp />
         </Buttons>
       </NavSection>
     ];
