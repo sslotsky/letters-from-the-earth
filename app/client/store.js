@@ -18,7 +18,7 @@ function rehydrate(state) {
 }
 
 export default function create(server = false) {
-  if (!store) {
+  if (!store || server) {
     store = createStore(
       reducers,
       server ? undefined : rehydrate(window.__PRELOADED_STATE__),

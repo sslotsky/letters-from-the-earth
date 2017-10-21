@@ -22,7 +22,6 @@ export default function render(req, res) {
     store.dispatch(setUser(req.currentUser));
   }
 
-
   const context = {};
 
   const sheet = new ServerStyleSheet()
