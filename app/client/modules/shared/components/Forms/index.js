@@ -5,3 +5,4 @@ export FormInput from './FormInput';
 export Save from './Save';
 export Fieldset from './Fieldset';
 export Captcha from './Captcha';
+export Legend from './Legend';

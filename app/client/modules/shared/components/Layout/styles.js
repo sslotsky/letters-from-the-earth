@@ -45,7 +45,7 @@ export const ButtonLink = Button.extend`
   border: none;
   box-shadow: none;
   background-color: transparent;
-  color: steelblue;
+  color: cadetblue;
   padding: 0;
   margin: 0 .5rem;
 

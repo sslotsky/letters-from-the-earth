@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const PageContainer = styled.div`
@@ -49,14 +49,13 @@ export const ContentHeader = styled.div`
   display: flex;
 `;
 
-export const LinkButton = styled(Link)`
+const buttonStyles = css`
   background-color: transparent;
   color: darkred;
   border-radius: .3rem;
   cursor: pointer;
   border: 3px solid darkred;
   padding: .75rem;
-  text-decoration: none;
   font-weight: bold;
 
   &:hover, &:focus {
@@ -71,6 +70,17 @@ export const LinkButton = styled(Link)`
     cursor: not-allowed;
     opacity: 0.3;
   }
+`;
+
+export const Submit = styled.button.attrs({
+  type: 'submit'
+})`
+  ${buttonStyles}
+`;
+
+export const LinkButton = styled(Link)`
+  ${buttonStyles}
+  text-decoration: none;
 `;
 
 export const Paragraph = styled.p`

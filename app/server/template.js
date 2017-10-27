@@ -14,7 +14,7 @@ export default (html, state, assets) => `
         height: 100%;
         width: 100%;
 
-        font-family: 'Merriweather', serif;
+        font-family: 'Open Sans', sans-serif;
       }
     </style>
     ${assets.styleTags}

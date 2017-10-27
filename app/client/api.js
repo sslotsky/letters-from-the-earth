@@ -17,9 +17,9 @@ adapter.interceptors.response.use(undefined, error => {
   if (error.response.status === 403) {
     store().dispatch(clearUser());
     logout();
+  } else {
+    return Promise.reject(error)
   }
-
-  return Promise.reject(error)
 })
 
 export default {

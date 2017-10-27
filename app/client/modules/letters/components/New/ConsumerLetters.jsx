@@ -1,7 +1,7 @@
 import React from 'react';
 import { RowContainer, LinkRow } from '../style';
 
-const letterTypes = [{
+export const letterTypes = [{
   display: 'Landlord Dispute',
   type: 'landlord_dispute'
 }, {

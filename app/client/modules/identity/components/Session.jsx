@@ -18,10 +18,19 @@ export function Session({ authenticated }) {
     />
   );
 
+  const choose = (
+    <Glyph
+      name="envelope"
+      title="Start New Letter"
+      path="/letters/choose"
+    />
+  );
+
   if (!authenticated) {
     return [
       <NavSection key="nav">
         {home}
+        {choose}
       </NavSection>,
       <NavSection key="session">
         <Buttons>
@@ -35,6 +44,7 @@ export function Session({ authenticated }) {
   return [
     <NavSection key="nav">
       {home}
+      {choose}
       <Glyph title="Dashboard" name="dashboard" path="/dashboard" />
     </NavSection>,
     <NavSection key="session">

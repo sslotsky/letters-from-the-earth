@@ -6,12 +6,16 @@ import { Heading } from 'MODULES/shared/components/Layout/Header';
 import { PageContainer, Page, ContentHeader, Content, LinkButton, Paragraph, Letter } from 'MODULES/shared/components/Layout/Page';
 import Nav from 'MODULES/shared/components/Nav';
 import StandardConsumer from './StandardConsumer';
+import BusinessLetter from './BusinessLetter';
 import Custom from './Custom';
+import { letterTypes as consumerLetters } from '../ConsumerLetters';
+import { letterTypes as businessLetters } from '../BusinessLetters';
 
 const map = dictionary().set(
-  'landlord_dispute',
-  'creditor_dispute'
-)(StandardConsumer);
+  ...consumerLetters.map(l => l.type)
+)(StandardConsumer).set(
+  ...businessLetters.map(l => l.type)
+)(BusinessLetter);
 
 export function LetterType({ letterType }) {
   const Template = map.get(letterType, Custom);

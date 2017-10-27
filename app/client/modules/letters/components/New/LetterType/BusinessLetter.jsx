@@ -9,33 +9,15 @@ import api from 'APP_ROOT/api';
 import formSubmission from 'MODULES/shared/actions/formSubmission';
 import Submit from './Submit';
 
-export function StandardConsumer({ handleSubmit, ...props }) {
+export function StandardBusiness({ handleSubmit, ...props }) {
   return (
     <Form onSubmit={handleSubmit}>
       <FormSection name="details" component="div">
         <Fieldset>
           <Legend>Letter is from</Legend>
           <FormGroup>
-            <Field name="first_name" component={FormInput} label="First Name" />
-            <Field name="last_name" component={FormInput} label="Last Name" />
-          </FormGroup>
-          <FormGroup>
-            <Field name="address" component={FormInput} label="Address" />
-          </FormGroup>
-          <FormGroup>
-            <Field name="city" component={FormInput} label="City" />
-            <Field name="state" component={FormInput} label="State" />
-            <Field name="zip" component={FormInput} label="Zip" />
-          </FormGroup>
-        </Fieldset>
-        <Fieldset>
-          <Legend>Letter is to</Legend>
-          <FormGroup>
             <Field name="business_name" component={FormInput} label="Business Name" />
-            <Field name="individual_name" component={FormInput} label="Individual Name" />
-          </FormGroup>
-          <FormGroup>
-            <Field name="account_number" component={FormInput} label="Account Number" />
+            <Field name="individual_name" component={FormInput} label="Your Name" />
           </FormGroup>
           <FormGroup>
             <Field name="business_address" component={FormInput} label="Address" />
@@ -44,6 +26,24 @@ export function StandardConsumer({ handleSubmit, ...props }) {
             <Field name="business_city" component={FormInput} label="City" />
             <Field name="business_state" component={FormInput} label="State" />
             <Field name="business_zip" component={FormInput} label="Zip" />
+          </FormGroup>
+        </Fieldset>
+        <Fieldset>
+          <Legend>Letter is to</Legend>
+          <FormGroup>
+            <Field name="first_name" component={FormInput} label="First Name" />
+            <Field name="last_name" component={FormInput} label="Last Name" />
+          </FormGroup>
+          <FormGroup>
+            <Field name="account_number" component={FormInput} label="Account Number" />
+          </FormGroup>
+          <FormGroup>
+            <Field name="address" component={FormInput} label="Address" />
+          </FormGroup>
+          <FormGroup>
+            <Field name="city" component={FormInput} label="City" />
+            <Field name="state" component={FormInput} label="State" />
+            <Field name="zip" component={FormInput} label="Zip" />
           </FormGroup>
         </Fieldset>
       </FormSection>
@@ -64,14 +64,11 @@ const withSubmit = inject(({ match }) => ({
   initialValues: {
     purpose: match.params.type
   },
-  onSubmit: formSubmission(api.letterRequests.of('standard_consumer_letters'))
+  onSubmit: formSubmission(api.letterRequests.of('standard_business_letters'))
 }));
 
-const pageActions = composables({ listId: 'letterRequests' });
-
 const form = reduxForm({
-  form: 'standardConsumer',
-  onSubmitSuccess: (_, dispatch) => dispatch(pageActions.expire()),
+  form: 'standardBusiness',
   validate: values => validator(values, form => {
     form.validateChild('details', (details) => {
       details.validate(
@@ -92,4 +89,5 @@ const form = reduxForm({
 });
 
 const redirect = redirectOnSubmit('/dashboard');
-export default withRouter(withSubmit(redirect(form(StandardConsumer))));
+export default withRouter(withSubmit(redirect(form(StandardBusiness))));
+
