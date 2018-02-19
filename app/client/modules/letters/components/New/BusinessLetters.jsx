@@ -1,13 +1,11 @@
 import React from 'react';
+import { BUSINESS } from 'MODULES/letters/letterTypes';
 import { RowContainer, LinkRow } from '../style';
 
-export const letterTypes = [{
-  display: 'Collection Letter, 30 Days Delinquent',
-  type: 'collection_30_day'
-}, {
-  display: 'Collection Letter, 60 Days Delinquent',
-  type: 'collection_60_day'
-}];
+export const letterTypes = Object.entries(BUSINESS).map(([k, v]) => ({
+  type: k,
+  display: v.label
+}));
 
 export default function BusinessLetters() {
   return letterTypes.map(t => (

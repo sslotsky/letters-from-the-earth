@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { clearUser } from 'MODULES/identity/actions';
-import { login, logout } from './session';
-import store from './store';
+import axios from "axios";
+import { clearUser } from "MODULES/identity/actions";
+import { login, logout } from "./session";
+import store from "./store";
 
 const apiBase = process.env.API_BASE;
 
@@ -9,7 +9,7 @@ export const adapter = axios.create({
   baseURL: apiBase,
   withCredentials: true,
   headers: {
-    Accept: 'application/json'
+    Accept: "application/json"
   }
 });
 
@@ -18,38 +18,44 @@ adapter.interceptors.response.use(undefined, error => {
     store().dispatch(clearUser());
     logout();
   } else {
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-})
+});
 
 export default {
   identity: {
-    signup: data => adapter.post('/accounts', data).then((resp) => {
-      login(resp.data.user);
-      return resp;
-    }),
-    checkEligibility: username => adapter.post('/eligibility_checks', { username }),
-    login: data => adapter.post('/session', data).then((resp) => {
-      login(resp.data.user);
-      return resp;
-    }).catch((err) => {
-      if (err.response.data.code === 'invalid_credentials') {
-        err.response.data.errors = { 
-          _error: ['Invalid credentials']
-        }
-      }
+    signup: data =>
+      adapter.post("/accounts", data).then(resp => {
+        login(resp.data.user);
+        return resp;
+      }),
+    checkEligibility: email => adapter.post("/eligibility_checks", { email }),
+    login: data =>
+      adapter
+        .post("/session", data)
+        .then(resp => {
+          login(resp.data.user);
+          return resp;
+        })
+        .catch(err => {
+          if (err.response.data.code === "invalid_credentials") {
+            err.response.data.errors = {
+              _error: ["Invalid credentials"]
+            };
+          }
 
-      throw err;
-    }),
-    logout: () => adapter.delete('/session').then((resp) => {
-      logout();
-      return resp;
-    })
+          throw err;
+        }),
+    logout: () =>
+      adapter.delete("/session").then(resp => {
+        logout();
+        return resp;
+      })
   },
   letterRequests: {
     search: params => {
-      return adapter.post('/letter_requests/search', params)
+      return adapter.post("/letter_requests/search", params);
     },
     of: type => data => adapter.post(`/letter_requests/${type}`, data)
   }
-}
+};

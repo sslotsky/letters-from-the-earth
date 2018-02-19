@@ -1,23 +1,24 @@
-import bcrypt from 'bcrypt-nodejs';
-import User from 'SERVER/models/User';
+import bcrypt from "bcrypt-nodejs";
+import User from "SERVER/models/User";
 
 export function create(data) {
-  const { username, password, role } = data;
-  const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  const { email, password, role } = data;
+  const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-  return User.forge({ username, role, password: hashedPassword }).save();
+  return User.forge({ email, role, password: hashedPassword }).save();
 }
 
-export function find(username) {
-  return User.where({ username }).fetch();
+export function find(email) {
+  return User.where({ email }).fetch();
 }
 
-export function eligible(username) {
-  return find(username).then(user => !user);
+export function eligible(email) {
+  return find(email).then(user => !user);
 }
 
-export function validate(username, password) {
-  return find(username).then((user) => {
+export function validate(email, password) {
+  debugger;
+  return find(email).then(user => {
     if (user) {
       const serialized = user.toJSON();
 

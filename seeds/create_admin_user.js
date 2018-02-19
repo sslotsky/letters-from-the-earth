@@ -1,8 +1,10 @@
-import { create } from 'SERVER/services/user';
+import { create } from "SERVER/services/user";
 
-export const seed = knex => knex('users').del()
-  .then(() => create({
-    username: 'admin',
-    password: 'please',
-    role: 'admin'
-  }));
+export const seed = knex =>
+  knex("users").del().then(() =>
+    create({
+      email: "admin@example.com",
+      password: "please",
+      role: "admin"
+    })
+  );

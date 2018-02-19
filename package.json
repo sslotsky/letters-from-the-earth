@@ -13,6 +13,7 @@
     "start": "webpack-dev-server --progress --colors -w",
     "migrate": "yarn run knex migrate:latest",
     "reset-db": "knex-migrate down --to 0 && knex-migrate up",
+    "seed": "yarn run knex seed:run",
     "knex": "babel-node --presets env,react,stage-0 node_modules/.bin/knex",
     "heroku-postbuild": "yarn run build-staging && yarn run migrate"
   },
@@ -42,6 +43,7 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
+    "email-validator": "^1.1.1",
     "express": "^4.15.4",
     "heroku-ssl-redirect": "^0.0.4",
     "history": "^4.7.2",
