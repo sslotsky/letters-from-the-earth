@@ -54,8 +54,10 @@ const form = reduxForm({
       form.validate("email", "password").satisfies(rules.required);
       form.validate("email").satisfies(rules.validEmail);
     }),
-  onSubmitSuccess: (resp, dispatch, { close }) =>
-    dispatch(setUser(resp.data.user)).then(close)
+  onSubmitSuccess: (resp, dispatch, { close }) => {
+    dispatch(setUser(resp.data.user));
+    close();
+  }
 });
 
 export default withSubmit(form(Login));

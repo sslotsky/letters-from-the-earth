@@ -17,9 +17,8 @@ export function eligible(email) {
 }
 
 export function validate(email, password) {
-  debugger;
   return find(email).then(user => {
-    if (user) {
+    if (user && user.get("confirmed")) {
       const serialized = user.toJSON();
 
       if (bcrypt.compareSync(password, serialized.password)) {

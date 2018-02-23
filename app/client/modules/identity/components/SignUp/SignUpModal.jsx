@@ -16,7 +16,7 @@ import * as rules from "LIB/validation/rules";
 import api from "APP_ROOT/api";
 import { Bottom } from "./styles";
 import formSubmission from "MODULES/shared/actions/formSubmission";
-import { setUser } from "MODULES/identity/actions";
+import { toasty } from "APP_ROOT/Toast";
 
 export function SignUpModal({ visible, close, handleSubmit, ...props }) {
   return (
@@ -72,8 +72,10 @@ const form = reduxForm({
       form.validate("email").satisfies(rules.validEmail);
       form.validate("confirm").satisfies(rules.matches("password"));
     }),
-  onSubmitSuccess: (resp, dispatch, { close }) =>
-    dispatch(setUser(resp.data.user)).then(close),
+  onSubmitSuccess: (resp, dispatch, { close }) => {
+    close();
+    toasty.toast(`We've sent a confirmation email to ${resp.data.user.email}`);
+  },
   asyncValidate: values => {
     return api.identity.checkEligibility(values.email).then(resp => {
       if (!resp.data.eligible) {

@@ -1,18 +1,17 @@
 import { eligible } from "SERVER/services/user";
-import { createAccount, login } from "SERVER/useCases/identity";
+import { createAccount, confirmAccount, login } from "SERVER/useCases/identity";
 import { writeCookie, clearCookie } from "SERVER/middleware";
+import { confirmationEmail } from "SERVER/services/email";
 
 export default function identity(api) {
-  api.post("/accounts", (req, res, next) => {
+  api.post("/accounts", async (req, res, next) => {
     const { email, password, code } = req.body;
 
-    return createAccount(email, password, code, req.ip)
-      .then(encoded =>
-        writeCookie(res, "auth-token", encoded.token).json({
-          user: encoded.user
-        })
-      )
-      .catch(next);
+    const token = await createAccount(email, password, code, req.ip);
+    const url = `${req.protocol}://${req.get("host")}/confirm/${token}`;
+    confirmationEmail(url, email);
+
+    res.json({ token });
   });
 
   api.post("/session", (req, res, next) => {
@@ -33,5 +32,11 @@ export default function identity(api) {
 
   api.post("/eligibility_checks", (req, res) => {
     return eligible(req.body.email).then(eligible => res.json({ eligible }));
+  });
+
+  api.post("/confirmations", (req, res, next) => {
+    return confirmAccount(req.body.token)
+      .then(token => res.json({ token }))
+      .catch(next);
   });
 }

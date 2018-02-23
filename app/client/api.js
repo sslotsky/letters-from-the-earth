@@ -24,12 +24,9 @@ adapter.interceptors.response.use(undefined, error => {
 
 export default {
   identity: {
-    signup: data =>
-      adapter.post("/accounts", data).then(resp => {
-        login(resp.data.user);
-        return resp;
-      }),
+    signup: data => adapter.post("/accounts", data),
     checkEligibility: email => adapter.post("/eligibility_checks", { email }),
+    confirmAccount: token => adapter.post(`/confirmations`, { token }),
     login: data =>
       adapter
         .post("/session", data)
