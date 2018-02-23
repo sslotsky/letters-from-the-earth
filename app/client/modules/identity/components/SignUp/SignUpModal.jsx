@@ -72,11 +72,16 @@ const form = reduxForm({
       form.validate("email").satisfies(rules.validEmail);
       form.validate("confirm").satisfies(rules.matches("password"));
     }),
-  onSubmitSuccess: (resp, dispatch, { close }) => {
+  onSubmitSuccess: (resp, dispatch, { close, destroy }) => {
+    destroy();
     close();
     toasty.toast(`We've sent a confirmation email to ${resp.data.user.email}`);
   },
   asyncValidate: values => {
+    if (!values.email) {
+      return Promise.resolve();
+    }
+
     return api.identity.checkEligibility(values.email).then(resp => {
       if (!resp.data.eligible) {
         return Promise.reject({

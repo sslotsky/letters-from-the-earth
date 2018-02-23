@@ -21,7 +21,7 @@ export async function createAccount(email, password, code, ip) {
     const user = await create({ email, password, role: "customer" });
     const { token } = await confirmationToken(user.id);
 
-    return token;
+    return { user, token };
   } catch (err) {
     if (err instanceof CaptchaError) {
       throw new ValidationException({

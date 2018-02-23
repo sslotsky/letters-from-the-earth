@@ -7,11 +7,11 @@ export default function identity(api) {
   api.post("/accounts", async (req, res, next) => {
     const { email, password, code } = req.body;
 
-    const token = await createAccount(email, password, code, req.ip);
+    const { user, token } = await createAccount(email, password, code, req.ip);
     const url = `${req.protocol}://${req.get("host")}/confirm/${token}`;
     confirmationEmail(url, email);
 
-    res.json({ token });
+    res.json({ user });
   });
 
   api.post("/session", (req, res, next) => {

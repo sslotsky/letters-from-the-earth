@@ -1,8 +1,8 @@
-import React from 'react';
-import Recaptcha from 'react-recaptcha';
+import React from "react";
+import Recaptcha from "react-recaptcha";
 
 export default function Captcha({ input }) {
-  const clear = () => input.onChange('');
+  const clear = () => input.onChange("");
 
   return (
     <Recaptcha
@@ -13,4 +13,3 @@ export default function Captcha({ input }) {
     />
   );
 }
-
