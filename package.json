@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "exec": "babel-node --presets env,stage-0",
     "server": "yarn run clean && yarn run build-client && babel-node app/server/server.js --presets env,react,stage-0",
     "build-client": "webpack --config ./webpack.config.ssr.js",
     "stage-test": "yarn run build-staging && node ./dist/server/server.js",
@@ -64,6 +65,7 @@
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "readline-sync": "^1.4.9",
     "redux": "^3.7.2",
     "redux-form": "^7.2.3",
     "redux-resolver": "^1.0.2",
