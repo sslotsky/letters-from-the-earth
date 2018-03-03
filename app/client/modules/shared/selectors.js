@@ -1,4 +1,7 @@
-export const authenticated = state => !!state.identity.user;
+export const authenticated = state => {
+  return !!state.identity.user;
+};
+export const user = state => state.identity.user;
 
 const memo = {};
 
@@ -25,5 +28,14 @@ export default function select(transform, ...selectors) {
 
 export const isAuthenticated = select(
   loggedIn => ({ authenticated: loggedIn }),
+  authenticated
+);
+
+export const userInfo = select(
+  (user = {}, authenticated) => ({
+    isAdmin: user.role === "admin",
+    authenticated
+  }),
+  user,
   authenticated
 );

@@ -1,18 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import "babel-polyfill";
 
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import { initializeStore } from '@orange-marmalade/paginate-this';
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import 'APP_ROOT/init';
+import { initializeStore } from "@orange-marmalade/paginate-this";
 
-import { setUser } from 'MODULES/identity/actions';
+import "APP_ROOT/init";
 
-import { user } from './session';
-import store from './store';
-import App from './App';
+import { setUser } from "MODULES/identity/actions";
+
+import { user } from "./session";
+import store from "./store";
+import App from "./App";
 
 const currentUser = user();
 
@@ -28,5 +30,5 @@ ReactDOM.hydrate(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById("app")
 );

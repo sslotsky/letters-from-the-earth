@@ -1,59 +1,52 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Buttons } from 'MODULES/shared/components/Layout';
-import { isAuthenticated } from 'MODULES/shared/selectors';
-import Glyph from 'MODULES/shared/components/Glyph/NavGlyph';
-import { NavSection } from 'MODULES/shared/components/Layout/Page';
-import SignUp from './SignUp';
-import Logout from './Logout';
-import Login from './Login';
+import React from "react";
+import { connect } from "react-redux";
+import { Buttons } from "MODULES/shared/components/Layout";
+import { userInfo } from "MODULES/shared/selectors";
+import Glyph from "MODULES/shared/components/Glyph/NavGlyph";
+import { NavSection } from "MODULES/shared/components/Layout/Page";
+import SignUp from "./SignUp";
+import Logout from "./Logout";
+import Login from "./Login";
 
-export function Session({ authenticated }) {
-  const home = (
-    <Glyph
-      name="home"
-      title="Home"
-      path="/"
-      exact
-    />
-  );
+export function Session({ authenticated, isAdmin }) {
+  const home = <Glyph name="home" title="Home" path="/" exact />;
 
   const choose = (
-    <Glyph
-      name="envelope"
-      title="Start New Letter"
-      path="/letters/choose"
-    />
+    <Glyph name="envelope" title="Start New Letter" path="/letters/choose" />
   );
 
   if (!authenticated) {
-    return [
-      <NavSection key="nav">
-        {home}
-        {choose}
-      </NavSection>,
-      <NavSection key="session">
-        <Buttons>
-          <Login />
-          <SignUp />
-        </Buttons>
-      </NavSection>
-    ];
+    return (
+      <React.Fragment>
+        <NavSection>
+          {home}
+          {choose}
+        </NavSection>
+        <NavSection>
+          <Buttons>
+            <Login />
+            <SignUp />
+          </Buttons>
+        </NavSection>
+      </React.Fragment>
+    );
   }
 
-  return [
-    <NavSection key="nav">
-      {home}
-      {choose}
-      <Glyph title="Dashboard" name="dashboard" path="/dashboard" />
-    </NavSection>,
-    <NavSection key="session">
-      <Buttons>
-        <Logout />
-      </Buttons>
-    </NavSection>
-  ];
+  return (
+    <React.Fragment>
+      <NavSection>
+        {home}
+        {choose}
+        <Glyph title="Dashboard" name="dashboard" path="/dashboard" />
+        {isAdmin && <Glyph title="Employees" name="users" path="/employees" />}
+      </NavSection>
+      <NavSection>
+        <Buttons>
+          <Logout />
+        </Buttons>
+      </NavSection>
+    </React.Fragment>
+  );
 }
 
-export default connect(isAuthenticated)(Session);
-
+export default connect(userInfo)(Session);

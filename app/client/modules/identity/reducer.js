@@ -1,8 +1,8 @@
-import { resolveEach } from 'redux-resolver';
-import * as actionTypes from './actionTypes';
+import { resolveEach } from "redux-resolver";
+import * as actionTypes from "./actionTypes";
 
 const initialState = {
-  user: null
+  user: undefined
 };
 
 function setUser(state, action) {
@@ -10,7 +10,7 @@ function setUser(state, action) {
 }
 
 function clearUser(state) {
-  return { ...state, user: null };
+  return { ...state, user: undefined };
 }
 
 export default resolveEach(initialState, {

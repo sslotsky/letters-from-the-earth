@@ -1,4 +1,5 @@
-export LetterRequest from './LetterRequest';
-export LetterDetail from './LetterDetail';
-export StandardConsumerLetter from './StandardConsumerLetter';
-export StandardBusinessLetter from './StandardBusinessLetter';
+export { default as LetterRequest } from "./LetterRequest";
+export { default as LetterDetail } from "./LetterDetail";
+export { default as StandardConsumerLetter } from "./StandardConsumerLetter";
+export { default as StandardBusinessLetter } from "./StandardBusinessLetter";
+export { Employee, Employees } from "./Employee";

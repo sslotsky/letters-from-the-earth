@@ -1,5 +1,6 @@
-export * from './Forms';
-export Modal from './Modal';
-export GlyphButton from './GlyphButton';
-export PrivateRoute from './PrivateRoute';
-export Dashboard from './Dashboard';
+export * from "./Forms";
+export { default as Modal } from "./Modal";
+export { default as GlyphButton } from "./GlyphButton";
+export { default as PrivateRoute } from "./PrivateRoute";
+export { default as AdminRoute } from "./AdminRoute";
+export { default as Dashboard } from "./Dashboard";

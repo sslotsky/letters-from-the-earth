@@ -9,6 +9,7 @@ import env from "dotenv";
 import render from "./serverRender";
 import identity from "SERVER/controllers/identity";
 import letterRequests from "SERVER/controllers/letterRequests";
+import employees from "SERVER/controllers/employees";
 import { decode, authenticate, apiErrors } from "SERVER/middleware";
 
 env.config();
@@ -39,6 +40,8 @@ identity(api);
 api.use(authenticate);
 
 letterRequests(api);
+
+employees(api);
 
 api.use(apiErrors);
 
