@@ -56,6 +56,9 @@ export default {
     of: type => data => adapter.post(`/letter_requests/${type}`, data)
   },
   employees: {
+    search: params => {
+      return adapter.post("/employees/search", params);
+    },
     create: data => adapter.post("/employees", data)
   }
 };
